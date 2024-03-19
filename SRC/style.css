@@ -1,0 +1,62 @@
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header {
+  margin: 0;
+}
+#header-wrapper {
+  display: flex;
+  flex-direction: row;
+  background: linear-gradient(to right, rgba(255, 0, 0, 0), rgb(28, 179, 43));
+}
+section {
+  flex: 1;
+}
+#mealsTable th,
+#mealsTable td {
+  padding: 5px;
+  border-right: none;
+  border-bottom: 2px solid green;
+}
+
+#mealsTable {
+  border-collapse: collapse;
+  width: 100%;
+}
+#mealsTable th {
+  font-size: 1.4rem;
+  background-color: rgb(29, 106, 37);
+  color: white;
+  padding: 10px 5px;
+}
+
+.order {
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+.plus {
+  background-color: black;
+  color: white;
+  padding: 4px;
+  border-radius: 3px;
+  align-content: flex-end;
+}
+/* //align  square button .plus to right */
+
+footer {
+  background-color: green;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
