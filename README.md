@@ -371,7 +371,31 @@ meals.json:
 ```
 </details>
 
-###### **Step 18**:
+###### **Step 18**:Toolbar and Spacer (Remove and Search)
 
 <details><summary><b>Details</b></summary>
+style.css: 
+.tbar {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: stretch;
+  flex-direction: row;
+}
+
+.tfill {
+flex: 1;
+}
+
+.tbar label {
+padding: 5px;
+}
+index.html:
+
+<div class="tbar">
+        <button>✖ Remove</button>
+        <div class="tfill"></div>
+        <input type="search" name="search" id="search" placeholder="Search" />
+        <label for="search">🔍</label>
+      </div>
 </details>
