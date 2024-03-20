@@ -5,13 +5,13 @@ function $(selector) {
 }
 
 function createMealRequest(meal) {
-  fetch("http://localhost:3000/meals-json/create", {
+  return fetch("http://localhost:3000/meals-json/create", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(meal)
-  });
+  }).then(r => r.json());
 }
 
 function getMealAsHTML(meal) {
@@ -61,8 +61,14 @@ function onSubmit(e) {
     avoid
   };
 
-  createMealRequest(meal);
-  window.location.reload();
+  createMealRequest(meal).then(status => {
+    // console.log("status", status);
+    if (status.success) {
+      window.location.reload();
+    }
+  });
+  // console.info("ready", r);
+
   // console.warn(meal);
 }
 

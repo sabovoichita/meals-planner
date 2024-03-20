@@ -13,6 +13,10 @@ Keep track of your meals! or Plan them in advance!
 - [x] Loading mask
 - [x] Multi remove
 
+## Git commands:
+
+- git reset --hard HEAD^ - to reset last commit
+
 ## Start (Daily usage)
 
 Start node-API
@@ -565,10 +569,55 @@ function onSubmit(e) {
   window.location.reload();
   // console.warn(meal);
 }
-
-function initEvents() {
+function initEvents(){
 $("#mealsForm").addEventListener("submit", onSubmit);
+
 }
-initEvents()
+initEvents();
+
+</details>
+
+###### **Step 23**:Wait for request to be done before we reload
+
+<details><summary><b>Details</b></summary>
+-add return:
+function createMealRequest(meal) {
+  return fetch("http://localhost:3000/meals-json/create", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(meal)
+  }).then(r => r.json());
+}
+-modify function onSubmit()
+
+function onSubmit(e) {
+// console.warn("submit", e);
+e.preventDefault();
+
+const date = $("input[name = order ]").value;
+const food = $("input[id = food]").value;
+const symptom = $("#symptom").value;
+const avoid = $("#avoid").value;
+
+const meal = {
+order: $("input[name = order ]").value,
+date: date,
+food: food,
+symptom,
+avoid
+};
+
+createMealRequest(meal).then(status => {
+// console.log("status", status);
+if (status.success) {
+window.location.reload();
+}
+});
+// console.info("ready", r);
+
+// console.warn(meal);
+}
 
 </details>
