@@ -444,3 +444,59 @@ function loadMeals() {
     });
 }
 </details>
+
+###### **Step 21**:Static form to creat meal
+
+<details><summary><b>Details</b></summary>
+style.css:
+#mealsTable tfoot input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+index.html
+
+<form id="mealsForm" method="get">
+        <table border="1" id="mealsTable">
+          <thead>
+            <colgroup>
+              <col span="1" />
+              <col span="1" />
+              <col span="1" />
+              <col span="1" />
+              <col span="1" />
+              <col span="1" style="width: 90px" />
+            </colgroup>
+            <tr>
+              <th>Order <span class="order">&#8645;</span></th>
+              <th>Date <span class="order">&#8645;</span></th>
+              <th>Food <span class="order">&#8645;</span></th>
+              <th>Symptom <span class="order">&#8645;</span></th>
+              <th>Avoid <span class="order">&#8645;</span></th>
+              <th>Add row</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <td>
+                <input required type="text" name="order" id="order" placeholder="Order" />
+              </td>
+              <td>
+                <input required type="text" name="date" id="date" placeholder="Date" />
+              </td>
+              <td>
+                <input required type="text" name="food" id="food" placeholder="Food" />
+              </td>
+              <td>
+                <input required type="text" name="symptom" id="symptom" placeholder="Symptom" />
+              </td>
+              <td>
+                <input required type="text" name="avoid" id="avoid" placeholder="Avoid" />
+              </td>
+              <td><button type="submit">✅</button> <button type="reset">❎</button></td>
+            </tr>
+          </tfoot>
+        </table>
+      </form>
+</details>

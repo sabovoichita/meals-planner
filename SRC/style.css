@@ -45,6 +45,11 @@ section {
   padding: 10px 5px;
 }
 
+#mealsTable tfoot input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .order {
   opacity: 0.3;
   cursor: pointer;
