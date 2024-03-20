@@ -55,10 +55,12 @@ Right Click - Format Document With... (configure...)
 
 <details><summary><b>Details</b></summary>
  Install required npm packages- run in console GitBash:
-"npm install --save-dev webpack webpack-cli
+```
+npm install --save-dev webpack webpack-cli
 npm i -D webpack-dev-server
 npm i -D html-webpack-plugin
-npm i -D html-loader style-loader css-loader"
+npm i -D html-loader style-loader css-loader
+```
 </details>
 
 ###### **Step 7**: create webpack.config.js file
@@ -107,7 +109,7 @@ publicPath: ""
 
 <details><summary><b>Details</b></summary>
 Add following scripts inside package.json(only content inside the braces with a comma first):
-
+```
 "scripts": {
 "clean": "rimraf docs",
 "clear": "npm run clean && rimraf node_modules",
@@ -116,7 +118,7 @@ Add following scripts inside package.json(only content inside the braces with a 
 "start": "webpack serve --open",
 "demo": "set PORT=8080 && serve docs"
 }
-
+```
 </details>
 
 ###### **Step 9**: Start Servers
@@ -324,9 +326,10 @@ background-color:#f2f2f2;
 
 </details>
 
-###### **Step 15**: Create teams.json, load them and print them in console
+###### **Step 16**: Create teams.json, load them and print them in console
 
 <details><summary><b>Details</b></summary>
+```
 function loadMeals() {
   fetch("meals.json")
     .then(r => r.json)
@@ -335,7 +338,40 @@ function loadMeals() {
     });
 }
 loadMeals();
+```
+-also delete script with index.js from index.html
+</details>
 
--also delete <script> with index.js from index.html
+###### **Step 17**: Render Meals using String Template
 
-</details
+<details><summary><b>Details</b></summary>
+```
+function getMealAsHTML(meal) {
+// console.info("inside map");
+return `<tr>
+  <td>${meal.order}</td>
+  <td>${new Date().toLocaleString()}</td>
+  <td>${meal.meal}</td>
+  <td>${meal.symptom}</td>
+  <td>${meal.avoid}</td>
+  <td><span class="plus">&#43;</span></td>
+</tr>`;
+}
+function renderMeals(meals) {
+const mealsHTML = meals.map(getMealAsHTML);
+document.querySelector("#mealsTable tbody").innerHTML = mealsHTML.join("");
+}
+meals.json:
+[
+{ "order": 1, "date": "18/03/2024", "meal": "4xPlain Toast", "symptom": "none", "avoid": "no" },
+{ "order": 2, "date": "18/03/2024", "meal": "1 Banana", "symptom": "none", "avoid": "no" },
+{ "order": 3, "date": "18/03/2024", "meal": "2 Eggs & 1 Orange", "symptom": "indigestion", "avoid": "no" },
+{ "order": 4, "date": "18/03/2024", "meal": "Rice & Chicken Gizzards & Olives", "symptom": "none", "avoid": "no" }
+]
+```
+</details>
+
+###### **Step 18**:
+
+<details><summary><b>Details</b></summary>
+</details>
