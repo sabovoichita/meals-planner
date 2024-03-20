@@ -1,4 +1,32 @@
-# myMeals
+# My Meals
+
+Keep track of your meals! or Plan them in advance!
+
+## Features and Usage
+
+- [x] Teams Networking (CRUD\*) Operations
+  - [x] **C**reate
+  - [x] **R**ead
+  - [x] **U**pdate
+  - [x] **D**elete
+- [x] Search
+- [x] Loading mask
+- [x] Multi remove
+
+## Start (Daily usage)
+
+Start node-API
+
+```sh
+cd C:/Products/node-api
+npm start
+```
+
+start app (run in current project):
+
+```sh
+npm start
+```
 
 # Preview(to follow)
 
