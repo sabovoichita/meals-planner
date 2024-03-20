@@ -20,6 +20,8 @@ header {
 }
 section {
   flex: 1;
+  background: url(/images/foodBackground.webp);
+  background-repeat: no-repeat;
 }
 #mealsTable th,
 #mealsTable td {
