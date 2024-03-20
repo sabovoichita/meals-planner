@@ -1,10 +1,24 @@
 import("./style.css");
 
+function $(selector) {
+  return document.querySelector(selector);
+}
+
+function createMealRequest(meal) {
+  fetch("http://localhost:3000/meals-json/create", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(meal)
+  });
+}
+
 function getMealAsHTML(meal) {
   //   console.info("inside map");
   return `<tr>
   <td>${meal.order}</td>
-  <td>${new Date().toLocaleString()}</td>
+  <td>${meal.date}</td>
   <td>${meal.food}</td>
   <td>${meal.symptom}</td>
   <td>${meal.avoid}</td>
@@ -14,7 +28,7 @@ function getMealAsHTML(meal) {
 
 function renderMeals(meals) {
   const mealsHTML = meals.map(getMealAsHTML);
-  document.querySelector("#mealsTable tbody").innerHTML = mealsHTML.join("");
+  $("#mealsTable tbody").innerHTML = mealsHTML.join("");
 }
 
 function loadMeals() {
@@ -30,4 +44,30 @@ function loadMeals() {
     });
 }
 
+function onSubmit(e) {
+  // console.warn("submit", e);
+  e.preventDefault();
+
+  const date = $("input[name = order ]").value;
+  const food = $("input[id = food]").value;
+  const symptom = $("#symptom").value;
+  const avoid = $("#avoid").value;
+
+  const meal = {
+    order: $("input[name = order ]").value,
+    date: date,
+    food: food,
+    symptom,
+    avoid
+  };
+
+  createMealRequest(meal);
+  window.location.reload();
+  // console.warn(meal);
+}
+
+function initEvents() {
+  $("#mealsForm").addEventListener("submit", onSubmit);
+}
+initEvents();
 loadMeals();

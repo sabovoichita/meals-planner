@@ -528,3 +528,47 @@ index.html
         </table>
       </form>
 </details>
+
+###### **Step 22**:Create meal request(function $,createMealRequest)
+
+<details><summary><b>Details</b></summary>
+function $(selector) {
+  return document.querySelector(selector);
+}
+function createMealRequest(meal) {
+  fetch("http://localhost:3000/meals-json/create", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(meal)
+  });
+}
+function $(selector) {
+  return document.querySelector(selector);
+}
+function onSubmit(e) {
+  // console.warn("submit", e);
+  e.preventDefault();
+  const date = $("input[name = order ]").value;
+  const food = $("input[id = food]").value;
+  const symptom = $("#symptom").value;
+  const avoid = $("#avoid").value;
+  const meal = {
+    order: $("input[name = order ]").value,
+    date: date,
+    food: food,
+    symptom,
+    avoid
+  };
+  createMealRequest(meal);
+  window.location.reload();
+  // console.warn(meal);
+}
+
+function initEvents() {
+$("#mealsForm").addEventListener("submit", onSubmit);
+}
+initEvents()
+
+</details>
