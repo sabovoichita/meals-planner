@@ -59,9 +59,11 @@ Right Click - Format Document With... (configure...)
 npm i -D webpack-dev-server
 npm i -D html-webpack-plugin
 npm i -D html-loader style-loader css-loader"
+</details>
 
 ###### **Step 7**: create webpack.config.js file
 
+<details><summary><b>Details</b></summary>
 Add to webpack.config.js:-run in console:"touch webpack.config.js" and add:
 
 const path = require("path");
@@ -166,7 +168,6 @@ npm run demo
 CTRL + Click in  terminal  to open :
 -Local:  http://localhost:8080 or
 -Network : https://192.168.68.132:8080
-
 </details>
 
 ###### **Step 13**: Create main layout
@@ -264,47 +265,60 @@ font-size:1.2em;
 
 <details><summary><b>Details</b></summary>
 index.html:
-
-<table id="teamsTable" border="1">
-<thead>
-<tr>
-<th>Promotion</th>
-<th>Members</th>
-<th>Project Name</th>
-<th>Project URL</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>FastTrackIT</td>
-<td>WON15</td>
-<td>Teams Networking</td>
-<td>won15/teams-networking</td>
-<td>x</td>
-</tr>
-</tbody>
-</table>
+<table border="1" id="mealsTable">
+        <tr>
+          <th>Order <span class="order">&#8645;</span></th>
+          <th>Date <span class="order">&#8645;</span></th>
+          <th>Time <span class="order">&#8645;</span></th>
+          <th>Meal <span class="order">&#8645;</span></th>
+          <th>Symptom <span class="order">&#8645;</span></th>
+          <th>Avoid <span class="order">&#8645;</span></th>
+          <th>Add row</th>
+        </tr>
+        <tr>
+          <td>1.</td>
+          <td>18/03/2024</td>
+          <td>08:30</td>
+          <td>4 x Plain Toast</td>
+          <td>None</td>
+          <td>No</td>
+          <td><span class="plus">&#43;</span></td>
+        </tr>
+      </table>
 
 style.css:
-
-#teamsTable {
-width:100%;
-border-collapse:collapse;
+#mealsTable th,
+#mealsTable td {
+padding: 5px;
+border-right: none;
+border-bottom: 2px solid green;
 }
 
-#teamsTable td,
-#teamsTable th {
-border:1px solid blue;
-padding:5px;
+#mealsTable {
+border-collapse: collapse;
+width: 100%;
+}
+#mealsTable th {
+font-size: 1.4rem;
+background-color: rgb(29, 106, 37);
+color: white;
+padding: 10px 5px;
 }
 
-#teamsTable th {
-color:white;
-background:#blue;
+.order {
+opacity: 0.3;
+cursor: pointer;
 }
 
-#teamsTable tr:nth-child(even) {
+.plus {
+background-color: black;
+color: white;
+padding: 4px;
+border-radius: 3px;
+align-content: flex-end;
+}
+
+#mealsTable tr:nth-child(even) {
 background-color:#f2f2f2;
 }
 
