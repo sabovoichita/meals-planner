@@ -327,5 +327,15 @@ background-color:#f2f2f2;
 ###### **Step 15**: Create teams.json, load them and print them in console
 
 <details><summary><b>Details</b></summary>
-...
+function loadMeals() {
+  fetch("meals.json")
+    .then(r => r.json)
+    .then(meals => {
+      console.warn("meals", meals);
+    });
+}
+loadMeals();
+
+-also delete <script> with index.js from index.html
+
 </details
