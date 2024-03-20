@@ -427,3 +427,20 @@ Create a new repository with "node-api-meals"(if you want)
 To Open: SHIFT+ RightClick to Open PoweShell then run npm start to get access to data in the other project
 
 </details>
+
+###### **Step 20**:Connect to Node-Api with the function loadTeams()
+
+<details><summary><b>Details</b></summary>
+function loadMeals() {
+  fetch("http://localhost:3000/meals-json", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(r => r.json())
+    .then(meals => {
+      renderMeals(meals);
+    });
+}
+</details>

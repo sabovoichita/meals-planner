@@ -18,7 +18,12 @@ function renderMeals(meals) {
 }
 
 function loadMeals() {
-  fetch("http://localhost:3000/meals-json")
+  fetch("http://localhost:3000/meals-json", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
     .then(r => r.json())
     .then(meals => {
       renderMeals(meals);
