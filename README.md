@@ -573,6 +573,7 @@ function initEvents(){
 $("#mealsForm").addEventListener("submit", onSubmit);
 
 }
+
 initEvents();
 
 </details>
