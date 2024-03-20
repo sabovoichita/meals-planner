@@ -5,7 +5,7 @@ function getMealAsHTML(meal) {
   return `<tr>
   <td>${meal.order}</td>
   <td>${new Date().toLocaleString()}</td>
-  <td>${meal.meal}</td>
+  <td>${meal.food}</td>
   <td>${meal.symptom}</td>
   <td>${meal.avoid}</td>
   <td><span class="plus">&#43;</span></td>
@@ -18,7 +18,7 @@ function renderMeals(meals) {
 }
 
 function loadMeals() {
-  fetch("meals.json")
+  fetch("http://localhost:3000/meals-json")
     .then(r => r.json())
     .then(meals => {
       renderMeals(meals);

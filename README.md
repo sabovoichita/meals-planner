@@ -399,3 +399,31 @@ index.html:
         <label for="search">🔍</label>
       </div>
 </details>
+
+###### **Step 19**:Connect to Node-Api
+
+<details><summary><b>Details</b></summary>
+
+#### Install :
+
+```
+ git clone https://github.com/sabovoichita/node-api.git
+ cd node-api
+ npm install
+```
+
+#### Usage:
+
+```
+npm start
+# or(when you work inside the code and want autorestart)
+npm run devstart
+```
+
+Open http://localhost:3000 to see if it works!
+-Modify the node-api with all necesarry data
+Create a new repository with "node-api-meals"(if you want)
+
+To Open: SHIFT+ RightClick to Open PoweShell then run npm start to get access to data in the other project
+
+</details>
