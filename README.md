@@ -626,6 +626,7 @@ window.location.reload();
 ###### **Step 24**:HTML &CSS for Remove Button
 
 <details><summary><b>Details</b></summary>
+
  <td>
   <button type = "button" class = "action-btn delete-btn">♻</button>
   </td>
@@ -649,4 +650,32 @@ line-height:25px;
 
 ---
 
+</details>
+
+###### **Step 25**:DeleteTeamRequest
+
+<details><summary><b>Details</b></summary>
+// DELETE teams-json/delete
+function deleteMealRequest(id) {
+  return fetch("http://localhost:3000/meals-json/delete", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ id: id })
+  }).then(r => r.json());
+}
+---
+data-id="${meal.id}
+---
+$("#mealsTable tbody").addEventListener("click", e => {
+    if (e.target.matches("button.delete-btn")) {
+      const id = e.target.dataset.id;
+      deleteMealRequest(id).then(status => {
+        if (status.success) {
+          window.location.reload();
+        }
+      });
+    }
+  });
 </details>
