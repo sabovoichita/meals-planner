@@ -28,6 +28,7 @@ section {
   padding: 5px;
   border-right: none;
   border-bottom: 2px solid green;
+  line-height: 25px;
 }
 
 #mealsTable td {
@@ -48,6 +49,19 @@ section {
 #mealsTable tfoot input[type="text"] {
   width: 100%;
   box-sizing: border-box;
+}
+
+.action-btn {
+  cursor: pointer;
+  min-width: 34px;
+}
+.delete-btn {
+  display: none;
+  color: #b90303;
+}
+
+#mealsTable tr:hover .delete-btn {
+  display: inline-block;
 }
 
 .order {

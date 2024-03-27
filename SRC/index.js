@@ -23,6 +23,9 @@ function getMealAsHTML(meal) {
   <td>${meal.symptom}</td>
   <td>${meal.avoid}</td>
   <td><span class="plus">&#43;</span></td>
+  <td>
+  <button type = "button" class = "action-btn delete-btn">♻</button>
+  </td>
 </tr>`;
 }
 

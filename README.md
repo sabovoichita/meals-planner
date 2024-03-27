@@ -622,3 +622,31 @@ window.location.reload();
 }
 
 </details>
+
+###### **Step 24**:HTML &CSS for Remove Button
+
+<details><summary><b>Details</b></summary>
+ <td>
+  <button type = "button" class = "action-btn delete-btn">♻</button>
+  </td>
+  ----
+  .action-btn {
+  cursor: pointer;
+  min-width: 34px;
+}
+.delete-btn {
+  display: none;
+  color: #b90303;
+}
+
+#mealsTable tr:hover .delete-btn {
+display: inline-block;
+}
+
+td, th{
+line-height:25px;
+}
+
+---
+
+</details>
