@@ -35,6 +35,7 @@ function getMealAsHTML(meal) {
   <td>${meal.avoid}</td>
   <td><span class="plus">&#43;</span></td>
   <td>
+  <button type = "button" data-id="${meal.id}" class = "action-btn edit-btn">&#9998;</button>
   <button type = "button" data-id="${meal.id}" class = "action-btn delete-btn">♻</button>
   </td>
 </tr>`;

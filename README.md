@@ -678,4 +678,31 @@ $("#mealsTable tbody").addEventListener("click", e => {
       });
     }
   });
+
+</details>
+
+###### **Step 26**:Add Edit Button + CSS
+
+<details><summary><b>Details</b></summary>
+index.html:
+class="table-actions"
+---
+ <button class="action-btn" type="submit">💾</button>
+                <button class="action-btn" type="reset">✖</button>
+---
+index.js:
+<button type = "button" data-id="${team.id}" class = "action-btn edit-btn">&#9998;</button>
+---
+style.css:
+.table-actions {
+  width: 90px;
+}
+.edit-btn {
+  display: none;
+  color: #039903;
+}
+#mealsTable tr:hover .action-btn {
+  display: inline-block;
+}
+
 </details>

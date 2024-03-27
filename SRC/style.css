@@ -51,16 +51,25 @@ section {
   box-sizing: border-box;
 }
 
+.table-actions {
+  width: 90px;
+}
+
 .action-btn {
   cursor: pointer;
   min-width: 34px;
+}
+
+.edit-btn {
+  display: none;
+  color: #039903;
 }
 .delete-btn {
   display: none;
   color: #b90303;
 }
 
-#mealsTable tr:hover .delete-btn {
+#mealsTable tr:hover .action-btn {
   display: inline-block;
 }
 
