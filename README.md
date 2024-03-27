@@ -706,3 +706,54 @@ style.css:
 }
 
 </details>
+
+###### **Step 27**:Update Team Request
+
+## <details><summary><b>Details</b></summary>
+
+index.js:
+let editId;
+let allMeals = [];
+
+---
+
+const meal = getMealValues();
+
+if (editId) {
+meal.id = editId;
+// console.warn("should we edit?", editId, meal);
+updateMealRequest(meal).then(status => {
+// console.warn("status", status);
+if (status.success) {
+window.location.reload();
+}
+});
+} else {
+createMealRequest(meal).then(status => {
+// console.warn("status: ?", status);
+if (status.success) {
+window.location.reload();
+}
+});
+}
+}function startEdit(id) {
+editId = id;
+const meal = allMeals.find(meal => meal.id === id);
+console.warn("edit", id, meal);
+setMealValues(meal);
+}
+
+function setMealValues(meal) {
+$("input[name=order]").value = meal.order;
+$("input[name=date]").value = meal.date;
+$("input[name=food").value = meal.food;
+$("input[name=symptom]").value = meal.symptom;
+$("input[name=avoid]").value = meal.avoid;
+}
+
+function getMealValues() {
+const order = $("input[name=order]").value;
+
+---
+
+</details>

@@ -1,5 +1,8 @@
 import("./style.css");
 
+let editId;
+let allMeals = [];
+
 function $(selector) {
   return document.querySelector(selector);
 }
@@ -22,6 +25,16 @@ function deleteMealRequest(id) {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({ id: id })
+  }).then(r => r.json());
+}
+
+function updateMealRequest(meal) {
+  return fetch("http://localhost:3000/meals-json/update", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(meal)
   }).then(r => r.json());
 }
 
@@ -55,6 +68,7 @@ function loadMeals() {
   })
     .then(r => r.json())
     .then(meals => {
+      allMeals = meals;
       renderMeals(meals);
     });
 }
@@ -63,28 +77,56 @@ function onSubmit(e) {
   // console.warn("submit", e);
   e.preventDefault();
 
+  const meal = getMealValues();
+
+  if (editId) {
+    meal.id = editId;
+    // console.warn("should we edit?", editId, meal);
+    updateMealRequest(meal).then(status => {
+      //   console.warn("status", status);
+      if (status.success) {
+        window.location.reload();
+      }
+    });
+  } else {
+    createMealRequest(meal).then(status => {
+      // console.warn("status: ?", status);
+      if (status.success) {
+        window.location.reload();
+      }
+    });
+  }
+}
+
+function startEdit(id) {
+  editId = id;
+  const meal = allMeals.find(meal => meal.id === id);
+  console.warn("edit", id, meal);
+  setMealValues(meal);
+}
+
+function setMealValues(meal) {
+  $("input[name=order]").value = meal.order;
+  $("input[name=date]").value = meal.date;
+  $("input[name=food").value = meal.food;
+  $("input[name=symptom]").value = meal.symptom;
+  $("input[name=avoid]").value = meal.avoid;
+}
+
+function getMealValues() {
+  const order = $("input[name=order]").value;
   const date = $("input[name = date ]").value;
   const food = $("input[id = food]").value;
   const symptom = $("#symptom").value;
   const avoid = $("#avoid").value;
 
-  const meal = {
-    order: $("input[name = order ]").value,
+  return {
+    order: order,
     date: date,
     food: food,
     symptom,
     avoid
   };
-
-  createMealRequest(meal).then(status => {
-    // console.log("status", status);
-    if (status.success) {
-      window.location.reload();
-    }
-  });
-  // console.info("ready", r);
-
-  // console.warn(meal);
 }
 
 function initEvents() {
@@ -98,6 +140,9 @@ function initEvents() {
           window.location.reload();
         }
       });
+    } else if (e.target.matches("button.edit-btn")) {
+      const id = e.target.dataset.id;
+      startEdit(id);
     }
   });
 }
