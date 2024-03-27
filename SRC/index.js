@@ -81,7 +81,7 @@ function onSubmit(e) {
 
   if (editId) {
     meal.id = editId;
-    // console.warn("should we edit?", editId, meal);
+    console.warn("should we edit?", editId, meal);
     updateMealRequest(meal).then(status => {
       //   console.warn("status", status);
       if (status.success) {
@@ -131,6 +131,11 @@ function getMealValues() {
 
 function initEvents() {
   $("#mealsForm").addEventListener("submit", onSubmit);
+
+  $("#mealsForm").addEventListener("reset", () => {
+    console.warn("reset", editId);
+    editId = undefined;
+  });
 
   $("#mealsTable tbody").addEventListener("click", e => {
     if (e.target.matches("button.delete-btn")) {

@@ -757,3 +757,16 @@ const order = $("input[name=order]").value;
 ---
 
 </details>
+
+###### **Step 28**:fix reset flow (clear editId)
+
+<details>
+<summary><b>Details</b></summary>
+.console.warn("should we edit?
+", editId, meal);
+$("#mealsForm").addEventListener("reset", () => {
+console.warn("reset", editId);
+editId = undefined;
+});
+
+</details>
