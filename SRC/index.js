@@ -129,10 +129,10 @@ function getMealValues() {
   };
 }
 
-function filterElements(search) {
+function filterElements(meals, search) {
   search = search.toLowerCase();
   // console.warn("search %o", search);
-  return allMeals.filter(meal => {
+  return meals.filter(meal => {
     // console.log("meal", meal.symptom === search);
     return (
       // meal.order.toLowerCase().includes(search) ||
@@ -147,7 +147,7 @@ function filterElements(search) {
 function initEvents() {
   $("#search").addEventListener("input", e => {
     const search = e.target.value;
-    const meals = filterElements(search);
+    const meals = filterElements(allMeals, search);
     renderMeals(meals);
   });
 

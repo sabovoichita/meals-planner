@@ -774,5 +774,36 @@ editId = undefined;
 ###### **Step 29**:filter elements
 
 <details><summary><b>Details</b></summary>
+function filterElements(search) {
+  search = search.toLowerCase();
+  // console.warn("search %o", search);
+  return allMeals.filter(meal => {
+    // console.log("meal", meal.symptom === search);
+    return (
+      // meal.order.toLowerCase().includes(search) ||
+      meal.date.toLowerCase().includes(search) ||
+      meal.food.toLowerCase().includes(search) ||
+      meal.symptom.toLowerCase().includes(search) ||
+      meal.avoid.toLowerCase().includes(search)
+    );
+  });
+}
+function initEvents() {
+  $("#search").addEventListener("input", e => {
+    const search = e.target.value;
+    const meals = filterElements(search);
+    renderMeals(meals);
+  });
+
+</details>
+
+###### **Step 30**:make filterElements pure functions
+
+<details><summary><b>Details</b></summary>
+function filterElements(meals, search) {
+...
+  return meals.filter(meal => {
+...
+const meals = filterElements(allMeals, search);
 
 </details>
