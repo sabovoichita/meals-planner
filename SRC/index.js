@@ -41,16 +41,16 @@ function updateMealRequest(meal) {
 function getMealAsHTML(meal) {
   //   console.info("inside map");
   return `<tr>
-  <td>${meal.order}</td>
+  <td>
+  <button type = "button" data-id="${meal.id}" class = "action-btn edit-btn">&#9998;</button>
+  <button type = "button" data-id="${meal.id}" class = "action-btn delete-btn">♻</button>
+  ${meal.order}</td>
   <td>${meal.date}</td>
   <td>${meal.food}</td>
   <td>${meal.symptom}</td>
   <td>${meal.avoid}</td>
-  <td><span class="plus">&#43;</span></td>
-  <td>
-  <button type = "button" data-id="${meal.id}" class = "action-btn edit-btn">&#9998;</button>
-  <button type = "button" data-id="${meal.id}" class = "action-btn delete-btn">♻</button>
-  </td>
+  <td><span class="plus">&#43;</span>
+ </td>
 </tr>`;
 }
 
@@ -115,8 +115,8 @@ function setMealValues(meal) {
 
 function getMealValues() {
   const order = $("input[name=order]").value;
-  const date = $("input[name = date ]").value;
-  const food = $("input[id = food]").value;
+  const date = $("input[name=date]").value;
+  const food = $("input[id=food]").value;
   const symptom = $("#symptom").value;
   const avoid = $("#avoid").value;
 
@@ -129,7 +129,28 @@ function getMealValues() {
   };
 }
 
+function filterElements(search) {
+  search = search.toLowerCase();
+  // console.warn("search %o", search);
+  return allMeals.filter(meal => {
+    // console.log("meal", meal.symptom === search);
+    return (
+      // meal.order.toLowerCase().includes(search) ||
+      meal.date.toLowerCase().includes(search) ||
+      meal.food.toLowerCase().includes(search) ||
+      meal.symptom.toLowerCase().includes(search) ||
+      meal.avoid.toLowerCase().includes(search)
+    );
+  });
+}
+
 function initEvents() {
+  $("#search").addEventListener("input", e => {
+    const search = e.target.value;
+    const meals = filterElements(search);
+    renderMeals(meals);
+  });
+
   $("#mealsForm").addEventListener("submit", onSubmit);
 
   $("#mealsForm").addEventListener("reset", () => {
