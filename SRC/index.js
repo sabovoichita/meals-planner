@@ -54,9 +54,35 @@ function getMealAsHTML(meal) {
 </tr>`;
 }
 
+function areMealsEquals(renderedMeals, meals) {
+  if (renderedMeals === meals) {
+    console.info("same array");
+    return true;
+  }
+  if (renderedMeals.length === meals.length) {
+    const eq = renderedMeals.every((meal, i) => meal === meals[i]);
+    if (eq) {
+      console.info("same content in arrays");
+      return true;
+    }
+  }
+  return false;
+}
+
+let renderedMeals = [];
 function renderMeals(meals) {
+  // console.time("eq-check");
+  if (areMealsEquals(renderedMeals, meals)) {
+    // console.timeEnd("eq-check");
+    return;
+  }
+  // console.timeEnd("eq-check");
+
+  renderedMeals === meals;
+  console.time("render");
   const mealsHTML = meals.map(getMealAsHTML);
   $("#mealsTable tbody").innerHTML = mealsHTML.join("");
+  console.timeEnd("render");
 }
 
 function loadMeals() {
@@ -168,7 +194,8 @@ function initEvents() {
       const id = e.target.dataset.id;
       deleteMealRequest(id).then(status => {
         if (status.success) {
-          window.location.reload();
+          allMeals = allMeals.filter(meal => meal.id !== id);
+          renderMeals(allMeals);
         }
       });
     } else if (e.target.matches("button.edit-btn")) {

@@ -821,3 +821,14 @@ const meals = filterElements(allMeals, search);
 ...
 
 </details>
+
+###### **Step 32**:live remove team without reload page & add areTeamsEquals function
+
+<details><summary><b>Details</b></summary>
+live remove team without reload page:
+
+allMeals = allMeals.filter(meal => meal.id !== id);
+renderMeals(allMeals);
+...
+
+</details>
