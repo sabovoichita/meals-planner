@@ -826,9 +826,41 @@ const meals = filterElements(allMeals, search);
 
 <details><summary><b>Details</b></summary>
 live remove team without reload page:
-
 allMeals = allMeals.filter(meal => meal.id !== id);
 renderMeals(allMeals);
 ...
+function areMealsEquals(renderedMeals, meals) {
+if (renderedMeals === meals) {
+console.info("same array");
+return true;
+}
+if (renderedMeals.length === meals.length) {
+const eq = renderedMeals.every((meal, i) => meal === meals[i]);
+if (eq) {
+console.info("same content in arrays");
+return true;
+}
+}
+return false;
+}
+let renderedMeals = [];
+function renderMeals(meals) {
+// console.time("eq-check");
+if (areMealsEquals(renderedMeals, meals)) {
+// console.timeEnd("eq-check");
+return;
+}
+// console.timeEnd("eq-check");
+renderedMeals === meals;
+console.time("render");
+const mealsHTML = meals.map(getMealAsHTML);
+$("#mealsTable tbody").innerHTML = mealsHTML.join("");
+console.timeEnd("render");
 
+</details>
+
+###### **Step 33**:use array.map to copy new array to new reference
+
+<details><summary><b>Details</b></summary>
+allMeals = allMeals.map(meal => meal);
 </details>

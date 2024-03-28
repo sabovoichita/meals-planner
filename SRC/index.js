@@ -121,6 +121,7 @@ function onSubmit(e) {
       if (status.success) {
         // window.location.reload();
         meal.id = status.id;
+        allMeals = allMeals.map(meal => meal);
         allMeals.push(meal);
         renderMeals(allMeals);
         $("#mealsForm").reset();
