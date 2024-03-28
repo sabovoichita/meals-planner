@@ -70,6 +70,7 @@ function loadMeals() {
     .then(meals => {
       allMeals = meals;
       renderMeals(meals);
+      console.timeEnd("app-ready");
     });
 }
 
@@ -90,9 +91,13 @@ function onSubmit(e) {
     });
   } else {
     createMealRequest(meal).then(status => {
-      // console.warn("status: ?", status);
+      console.warn("status: ?", status, meal);
       if (status.success) {
-        window.location.reload();
+        // window.location.reload();
+        meal.id = status.id;
+        allMeals.push(meal);
+        renderMeals(allMeals);
+        $("#mealsForm").reset();
       }
     });
   }

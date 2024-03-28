@@ -807,3 +807,17 @@ function filterElements(meals, search) {
 const meals = filterElements(allMeals, search);
 
 </details>
+
+###### **Step 31**:inline push new team and rerender all teams
+
+<details><summary><b>Details</b></summary>
+<script>
+    console.time("app-ready");
+  </script>
+  ...
+  console.timeEnd("app-ready");
+  ...
+  console.warn("status: ?", status, meal);
+...
+
+</details>
