@@ -117,13 +117,16 @@ function onSubmit(e) {
     });
   } else {
     createMealRequest(meal).then(status => {
-      console.warn("status: ?", status, meal);
+      // console.warn("status: ?", status, meal);
       if (status.success) {
         // window.location.reload();
         meal.id = status.id;
         allMeals = allMeals.map(meal => meal);
+
         allMeals.push(meal);
+
         renderMeals(allMeals);
+
         $("#mealsForm").reset();
       }
     });
@@ -176,6 +179,14 @@ function filterElements(meals, search) {
   });
 }
 
+function sortMealsByOrder(a, b) {
+  console.info("sort", a, b);
+  return b.order - a.order;
+}
+// document.querySelectorAll("span").addEventListener("click", e => {
+// console.warn("here", e.target);
+// sort(sortMealsByDate);
+// });
 function initEvents() {
   $("#search").addEventListener("input", e => {
     const search = e.target.value;

@@ -32,7 +32,7 @@ start app (run in current project):
 npm start
 ```
 
-# Preview(to follow)
+# (Preview)[images/header.jpg]
 
 ## Steps:
 
