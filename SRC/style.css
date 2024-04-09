@@ -24,7 +24,7 @@ section {
 }
 #mealsTable th,
 #mealsTable td {
-  padding: 5px;
+  padding: 8px;
   border-right: none;
   border-bottom: 2px solid green;
   line-height: 25px;
@@ -37,6 +37,9 @@ section {
 #mealsTable {
   border-collapse: collapse;
   width: 100%;
+  table-layout: fixed;
+  height: 300px; /* Set the fixed height */
+  overflow-y: auto; /* Enable vertical scrolling */
 }
 #mealsTable th {
   font-size: 1.4rem;
@@ -45,11 +48,35 @@ section {
   padding: 10px 5px;
 }
 
-#mealsTable tfoot input[type="text"] {
+*/ #mealsTable tfoot input[type="text"] {
   width: 100%;
   box-sizing: border-box;
 }
+/* //trying to make a scroll table */
+#mealsTable tbody {
+  height: 100px; /* Set a fixed height for tbody */
+  overflow-y: scroll; /* Enable vertical scroll */
+}
 
+#mealsTable tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#mealsTable tbody tr:hover {
+  background-color: #ddd;
+}
+
+#mealsTable tbody tr td:last-child {
+  width: 50px; /* Adjust as needed */
+  text-align: center;
+}
+#mealsTable tbody tr td:last-child .plus {
+  cursor: pointer;
+}
+
+/* #mealsTable tbody tr td:last-child .plus::after {
+  content: "+";
+} */
 .table-actions {
   width: 90px;
   line-height: 65px;
