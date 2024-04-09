@@ -179,14 +179,19 @@ function filterElements(meals, search) {
   });
 }
 
-function sortMealsByOrder(a, b) {
-  console.info("sort", a, b);
-  return b.order - a.order;
+// Function to sort meals based on a criterion and sorting order
+function sortMeals(meals, sortBy, sortOrder) {
+  const sortedMeals = meals.slice(); // Create a copy of meals array
+  sortedMeals.sort((a, b) => {
+    if (sortOrder === "asc") {
+      return a[sortBy] > b[sortBy] ? 1 : -1;
+    } else {
+      return a[sortBy] < b[sortBy] ? 1 : -1;
+    }
+  });
+  return sortedMeals;
 }
-// document.querySelectorAll("span").addEventListener("click", e => {
-// console.warn("here", e.target);
-// sort(sortMealsByDate);
-// });
+
 function initEvents() {
   $("#search").addEventListener("input", e => {
     const search = e.target.value;
@@ -199,6 +204,19 @@ function initEvents() {
   $("#mealsForm").addEventListener("reset", () => {
     console.warn("reset", editId);
     editId = undefined;
+  });
+
+  // Add event listener to the table header for sorting
+  document.querySelectorAll("#mealsTable th span").forEach(span => {
+    span.addEventListener("click", () => {
+      const sortBy = span.dataset.sortBy;
+      const sortOrder = span.dataset.sortOrder === "asc" ? "desc" : "asc"; // Toggle sorting order
+      span.dataset.sortOrder = sortOrder;
+
+      // Sort meals based on the selected criterion and sorting order
+      const sortedMeals = sortMeals(allMeals, sortBy, sortOrder);
+      renderMeals(sortedMeals);
+    });
   });
 
   $("#mealsTable tbody").addEventListener("click", e => {
@@ -216,5 +234,6 @@ function initEvents() {
     }
   });
 }
+
 initEvents();
 loadMeals();
