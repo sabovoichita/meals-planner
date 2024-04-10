@@ -13,7 +13,9 @@ Keep track of your meals! or Plan them in advance!
 - [] Loading mask
 - [] Multi remove
 - [] Add inbetween
+- [] Live link
   -make a scroll table with 10 rows
+  -add command for npm start both projects
 
 ## Git commands:
 
