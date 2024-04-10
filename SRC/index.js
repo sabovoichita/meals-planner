@@ -254,6 +254,18 @@ const calcScrollValue = () => {
   scrollProgress.style.background = `conic-gradient(#008000 ${scrollValue}%, #ffffff ${scrollValue}%)`;
 };
 
+function addFooterLink() {
+  const footer = document.querySelector("footer");
+  const link = document.createElement("a");
+  link.href = "https://github.com/sabovoichita/myMeals";
+  link.target = "_blank";
+  link.textContent = "⚙Source Code";
+  link.style.color = "white";
+  footer.appendChild(link);
+}
+// Call the addFooterLink function after the page content is loaded
+window.onload = addFooterLink();
+
 window.onscroll = calcScrollValue;
 window.onload = calcScrollValue;
 

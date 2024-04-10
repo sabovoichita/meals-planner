@@ -10,8 +10,10 @@ Keep track of your meals! or Plan them in advance!
   - [x] **U**pdate
   - [x] **D**elete
 - [x] Search
-- [x] Loading mask
-- [x] Multi remove
+- [] Loading mask
+- [] Multi remove
+- [] Add inbetween
+  -make a scroll table with 10 rows
 
 ## Git commands:
 
