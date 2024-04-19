@@ -39,7 +39,8 @@ section {
   width: 100%;
   table-layout: fixed;
   height: 300px; /* Set the fixed height */
-  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-y: scroll; /* Enable vertical scrolling */
+  display: block;
 }
 #mealsTable th {
   font-size: 1.4rem;
