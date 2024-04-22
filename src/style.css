@@ -20,7 +20,7 @@ header {
 }
 section {
   flex: 1;
-  background-image: url(src/images/foodBackground.png);
+  /* background-image: url("../images/foodBackground.png"); */
 }
 
 #mealsTable th,
@@ -39,7 +39,7 @@ section {
   border-collapse: collapse;
   width: 100%;
   table-layout: fixed;
-  height: 400px; /* Set the fixed height */
+  height: 420px; /* Set the fixed height */
   overflow-y: scroll; /* Enable vertical scrolling */
   display: block;
 }
