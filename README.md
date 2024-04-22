@@ -14,8 +14,8 @@ Keep track of your meals! or Plan them in advance!
 - [] Multi remove
 - [] Add inbetween
 - [] Live link
-- [] make a scroll table with 10 rows
-- [] add command for npm start both projects
+- [x] make a scroll table with 10 rows
+- [x] command for npm start project="npm run api&npm start"
 
 ## Git commands:
 
