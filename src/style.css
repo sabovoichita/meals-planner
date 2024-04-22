@@ -20,7 +20,7 @@ header {
 }
 section {
   flex: 1;
-  /* background-image: url("../images/foodBackground.png"); */
+  background-image: url("../images/foodBackground.png");
 }
 
 #mealsTable th,
