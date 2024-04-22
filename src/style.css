@@ -20,8 +20,9 @@ header {
 }
 section {
   flex: 1;
-  background: url(/images/foodBackground.webp);
+  background-image: image(src/images/foodBackground.png);
 }
+
 #mealsTable th,
 #mealsTable td {
   padding: 8px;
