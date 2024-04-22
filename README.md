@@ -36,6 +36,8 @@ start app (run in current project):
 npm start
 ```
 
+[🆗] (https://sabovoichita.github.io/meals-planner/)
+
 ![Preview](src/images/Preview.png)
 
 ## Steps:
