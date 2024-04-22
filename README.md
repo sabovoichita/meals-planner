@@ -36,7 +36,7 @@ start app (run in current project):
 npm start
 ```
 
-![Preview](images/Preview.png)
+![Preview](src/images/Preview.png)
 
 ## Steps:
 
