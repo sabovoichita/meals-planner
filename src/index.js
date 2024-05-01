@@ -56,13 +56,13 @@ function getMealAsHTML(meal) {
 
 function areMealsEquals(renderedMeals, meals) {
   if (renderedMeals === meals) {
-    console.info("same array");
+    // console.info("same array");
     return true;
   }
   if (renderedMeals.length === meals.length) {
     const eq = renderedMeals.every((meal, i) => meal === meals[i]);
     if (eq) {
-      console.info("same content in arrays");
+      // console.info("same content in arrays");
       return true;
     }
   }
@@ -79,10 +79,10 @@ function renderMeals(meals) {
   // console.timeEnd("eq-check");
 
   renderedMeals === meals;
-  console.time("render");
+  // console.time("render");
   const mealsHTML = meals.map(getMealAsHTML);
   $("#mealsTable tbody").innerHTML = mealsHTML.join("");
-  console.timeEnd("render");
+  // console.timeEnd("render");
 }
 
 function loadMeals() {
@@ -96,7 +96,7 @@ function loadMeals() {
     .then(meals => {
       allMeals = meals;
       renderMeals(meals);
-      console.timeEnd("app-ready");
+      // console.timeEnd("app-ready");
     });
 }
 
@@ -108,7 +108,7 @@ function onSubmit(e) {
 
   if (editId) {
     meal.id = editId;
-    console.warn("should we edit?", editId, meal);
+    // console.warn("should we edit?", editId, meal);
     updateMealRequest(meal).then(status => {
       //   console.warn("status", status);
       if (status.success) {
@@ -136,7 +136,7 @@ function onSubmit(e) {
 function startEdit(id) {
   editId = id;
   const meal = allMeals.find(meal => meal.id === id);
-  console.warn("edit", id, meal);
+  // console.warn("edit", id, meal);
   setMealValues(meal);
 }
 
@@ -202,7 +202,7 @@ function initEvents() {
   $("#mealsForm").addEventListener("submit", onSubmit);
 
   $("#mealsForm").addEventListener("reset", () => {
-    console.warn("reset", editId);
+    // console.warn("reset", editId);
     editId = undefined;
   });
 
