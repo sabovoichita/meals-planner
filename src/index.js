@@ -1,42 +1,8 @@
 import("./style.css");
-
+import { $ } from "./utilities";
+import { createMealRequest, deleteMealRequest, updateMealRequest, loadMealRequest } from "./middleware";
 let editId;
 let allMeals = [];
-
-function $(selector) {
-  return document.querySelector(selector);
-}
-
-function createMealRequest(meal) {
-  return fetch("http://localhost:3000/meals-json/create", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(meal)
-  }).then(r => r.json());
-}
-
-// DELETE teams-json/delete
-function deleteMealRequest(id) {
-  return fetch("http://localhost:3000/meals-json/delete", {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ id: id })
-  }).then(r => r.json());
-}
-
-function updateMealRequest(meal) {
-  return fetch("http://localhost:3000/meals-json/update", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(meal)
-  }).then(r => r.json());
-}
 
 function getMealAsHTML(meal) {
   //   console.info("inside map");
@@ -85,19 +51,10 @@ function renderMeals(meals) {
   // console.timeEnd("render");
 }
 
-function loadMeals() {
-  fetch("http://localhost:3000/meals-json", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json"
-    }
-  })
-    .then(r => r.json())
-    .then(meals => {
-      allMeals = meals;
-      renderMeals(meals);
-      // console.timeEnd("app-ready");
-    });
+async function loadMeals() {
+  const meals = await loadMealRequest();
+  allMeals = meals;
+  renderMeals(meals);
 }
 
 function onSubmit(e) {
