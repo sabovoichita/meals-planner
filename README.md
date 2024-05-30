@@ -10,8 +10,8 @@ Keep track of your meals! or Plan them in advance!
   - [x] **U**pdate
   - [x] **D**elete
 - [x] Search
-- [] Loading mask
-- [] Multi remove
+- [x] Loading mask
+- [] Multi remove activ
 - [] Add inbetween
 - [x] Live link
 - [x] make a scroll table with 10 rows
